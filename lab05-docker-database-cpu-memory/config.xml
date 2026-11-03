@@ -1,0 +1,9 @@
+
+<configuration>
+    <database>
+        <host>mysql-test</host>
+        <port>3306</port>
+        <user>root</user>
+        <password>rootpwd</password>
+    </database>
+</configuration>
