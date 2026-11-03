@@ -1,0 +1,16 @@
+
+# Base image
+FROM ubuntu:latest
+
+# Install dependencies without cleaning up
+RUN apt-get update
+RUN apt-get install -y curl wget git python3-pip
+
+# Copy application files
+COPY app/ /usr/src/app/
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Run the application
+CMD ["python3", "app.py"]
