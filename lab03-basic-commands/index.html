@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Órale! | Cocina Mexicana</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+    :root {
+      --green: #174c3c;
+      --red: #c63c2e;
+      --cream: #fff8eb;
+      --gold: #f5b84b;
+      --ink: #29251e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: var(--cream);
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--green);
+      font: 800 30px 'Playfair Display', serif;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    .hero {
+      min-height: 510px;
+      display: flex;
+      align-items: center;
+      padding: 70px 8%;
+      color: white;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(13,37,29,.94),
+          rgba(13,37,29,.35)
+        ),
+        url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=1600')
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 1.08;
+      margin: 15px 0 22px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: var(--red);
+      color: white;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-top: 16px;
+      transition: transform .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 42px;
+      margin: 10px 0 15px;
+    }
+
+    .subtitle {
+      color: #776f62;
+      margin-bottom: 35px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .food-card {
+      background: white;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.07);
+      transition: transform .2s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 235px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .food-body {
+      padding: 24px;
+    }
+
+    .food-body h3 {
+      font-size: 25px;
+      margin: 0 0 10px;
+    }
+
+    .food-body p {
+      color: #776f62;
+      line-height: 1.6;
+    }
+
+    .price {
+      color: var(--red);
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .special {
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .special h2 {
+      font-size: 45px;
+    }
+
+    .special p {
+      font-size: 18px;
+    }
+
+    .about {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about p {
+      line-height: 1.9;
+      color: #665f54;
+    }
+
+    footer {
+      background: #192b23;
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    footer h2 {
+      color: var(--gold);
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      background: rgba(255,255,255,.1);
+      padding: 12px 17px;
+      border-radius: 30px;
+    }
+
+    .socials a:hover {
+      background: var(--red);
+    }
+
+    .demo {
+      margin-top: 35px;
+      color: #c6d2cb;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 850px) {
+      header {
+        flex-direction: column;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 440px;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#inicio" class="logo">🌮 ¡Órale!</a>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#menu">Nuestro menú</a>
+      <a href="#especial">Promociones</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="eyebrow">
+          🇲🇽 Sabor auténticamente mexicano
+        </span>
+
+        <h1>El sabor de México en cada bocado.</h1>
+
+        <p>
+          Tacos, tradición y mucho corazón.
+          Descubre una explosión de sabores que te hará
+          sentir como en casa.
+        </p>
+
+        <a href="#menu" class="btn">
+          🌮 Explora nuestro menú
+        </a>
+      </div>
+    </div>
+
+    <section id="menu">
+      <div class="center">
+        <span class="eyebrow" style="color:#c63c2e">
+          Hecho con amor
+        </span>
+
+        <h2>Los favoritos de la casa</h2>
+
+        <p class="subtitle">
+          Recetas tradicionales, ingredientes frescos
+          y muchísimo sabor.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800"
+            alt="Tacos mexicanos"
+            loading="lazy"
+          >
+
+          <div class="food-body">
+            <h3>🌮 Tacos de la casa</h3>
+
+            <p>
+              Tortillas calientitas, carne jugosa,
+              cebolla, cilantro y nuestras salsas especiales.
+            </p>
+
+            <span class="price">$95 MXN</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800"
+            alt="Quesadillas especiales"
+            loading="lazy"
+          >
+
+          <div class="food-body">
+            <h3>🧀 Quesadillas especiales</h3>
+
+            <p>
+              Tortillas doraditas rellenas de queso fundido,
+              acompañadas con salsa casera.
+            </p>
+
+            <span class="price">$110 MXN</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800"
+            alt="Especial de la casa"
+            loading="lazy"
+          >
+
+          <div class="food-body">
+            <h3>🥑 Especial de la casa</h3>
+
+            <p>
+              Ingredientes frescos y una combinación
+              deliciosa de sabores mexicanos.
+            </p>
+
+            <span class="price">$135 MXN</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="special" id="especial">
+      <span class="eyebrow">🔥 Promoción especial</span>
+
+      <h2>¡Martes de tacos!</h2>
+
+      <p>
+        🌮 3 tacos + 🥤 agua fresca por solo $129 MXN
+      </p>
+
+      <p>
+        Porque un buen taco siempre merece otro.
+      </p>
+
+      <a href="#contacto" class="btn">
+        Conoce más
+      </a>
+    </section>
+
+    <section id="nosotros">
+      <div class="about">
+        <span class="eyebrow" style="color:#c63c2e">
+          Nuestra historia
+        </span>
+
+        <h2>Más que comida, una tradición ❤️</h2>
+
+        <p>
+          En ¡Órale! celebramos lo mejor de nuestra cocina.
+          Nos inspiran los mercados, los sabores de nuestras
+          abuelas y las reuniones alrededor de una buena mesa.
+          Cada platillo es una pequeña fiesta mexicana.
+        </p>
+
+        <p>
+          🇲🇽 Hecho en México, con mucho orgullo.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contacto">
+    <h2>🌶️ ¡Órale!</h2>
+
+    <p>
+      Buena comida. Buena gente. Buenos momentos.
+    </p>
+
+    <p>
+      📍 México | 📞 771-000-0000 (demo)
+    </p>
+
+    <p>¡Síguenos en redes sociales!</p>
+
+    <div class="socials">
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📸 Instagram
+      </a>
+
+      <a
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        👍 Facebook
+      </a>
+
+      <a
+        href="https://www.tiktok.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🎵 TikTok
+      </a>
+    </div>
+
+    <p class="demo">
+      © 2026 ¡Órale! | Docker Lab 03 | Powered by Nginx
+    </p>
+  </footer>
+
+</body>
+</html>
