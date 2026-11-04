@@ -1,0 +1,36 @@
+services:
+  frontend:
+    image: nginx:alpine
+    container_name: cont-l10-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  backend:
+    image: img-l10-backend:local
+    container_name: cont-l10-backend
+    environment:
+      FLASK_ENV: development
+      DB_HOST: database
+      DB_NAME: mydb
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+    ports:
+      - "8081:5001"
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0
+    container_name: cont-l10-database
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
